@@ -1,16 +1,16 @@
-import React from 'react';
-import Hero from './Hero';
-import About from './About';
-import ClineReviwe from './ClineReviwe';
+import Hero from "./Hero";
+import About from "./About";
+import ClientReview from "./ClientReview";
 
 const Home = () => {
-    return (
-        <div>
-            <Hero></Hero>
-            <About></About>
-            <ClineReviwe></ClineReviwe>
-        </div>
-    );
+  return (
+    <div>
+      <Hero />
+      <About />
+      {/*  TODO: What is the point of review? Experiences section would be more appropriate */}
+      <ClientReview />
+    </div>
+  );
 };
 
 export default Home;
