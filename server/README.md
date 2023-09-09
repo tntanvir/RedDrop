@@ -10,4 +10,4 @@ This part of the project uses Python, install it if don't already have it. We re
 
 ## Docs
 
-Science this service is built with FastAPI, it contains docs which you can access from `SERVER_PATH/docs` (default is: `http://localhost:8000/docs`)
+Science this service is built with FastAPI, it contains docs which you can access from `SERVER_BASE_URL/docs` and `SERVER_BASE_URL/redoc` (default is: `http://localhost:8000/docs` or `http://localhost:800/redoc`)

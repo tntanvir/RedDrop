@@ -6,5 +6,5 @@ Fullstack blood donation website where you can find and donate blood easily.
 
 This project consists of two parts:
 
-- [Frontend](./main/client)
-- [Backend](./main/server)
+- [The Frontend](./client)
+- [The Backend](./server)
