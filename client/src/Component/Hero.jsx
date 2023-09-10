@@ -1,35 +1,24 @@
+import doner from '../assets/img/boner.png'
 const Hero = () => {
-  const parallax = {
-    /* The image used */
-    backgroundImage: `url('https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg')`,
-    // TODO: This image doesn't go with the website theme.
 
-    /* Full height */
-    height: "100%",
-
-    /* Create the parallax scrolling effect */
-    backgroundAttachment: "fixed",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  };
 
   return (
-    <div className="hero min-h-screen -z-40 " style={parallax}>
-      <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content z-0">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+    <div className=" h-screen text-white flex-row md:flex justify-around items-center md:px-16 px-2">
+      <div className="md:w-1/2 ">
+        <h1 className='md:text-6xl md:text-start text-center text-3xl'>Donate Blood</h1>
+        <h1 className='text-center text-4xl md:text-7xl text-[#ff725e]'>&</h1>
+        <h1 className='md:text-5xl text-3xl text-center md:text-end'>Sava a Life</h1>
+        <p className='text-justify md:mt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam veritatis natus cum, reprehenderit recusandae, in illo sit eum sapiente magnam sint iste laudantium velit non quaerat. Unde consequuntur natus quisquam.</p>
+        <div className='flex gap-5 justify-center md:justify-start md:mt-4'>
+          <button className='px-5 py-1 bg-[#ff725e] text-white rounded-lg'>Donate</button>
+          <button className='px-5 py-1 bg-[#ff725e] text-white rounded-lg'>Find</button>
         </div>
       </div>
+      <div className='lg:w-2/6 flex items-center justify-center m-auto'>
+        <img src={doner} alt="" />
+      </div>
     </div>
-  );
+  )
 };
 
 export default Hero;

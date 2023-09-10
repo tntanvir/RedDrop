@@ -7,7 +7,7 @@ import "swiper/css/autoplay";
 import { Navigation, Pagination, Autoplay } from "swiper";
 const ClineReviwe = () => {
   return (
-    <section className="py-20 text-black bg-white ">
+    <section className="py-20 text-white ">
       <div className="text-center">
         <h1 className="text-5xl">Reviews</h1>
       </div>
