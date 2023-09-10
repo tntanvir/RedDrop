@@ -1,3 +1,4 @@
+from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from ..models.user import User
@@ -5,8 +6,9 @@ from ..schemas.user import UserRequest
 
 
 def create_user(db: Session, user: UserRequest):
-    new_user = User(name=user.name, password=user.password,
-                    phone=user.phone, email=user.email, blood_group=user.blood_group)
+    new_user = User(name=user.name, password=user.password, phone=user.phone, email=user.email,
+                    blood_group=user.blood_group, location=user.location,
+                    is_donar=user.is_donar)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
@@ -18,10 +20,16 @@ def get_users(db: Session):
 
 
 def get_user(db: Session, user_id: int):
-    return db.query(User).filter(User.id == user_id).first()
+    user = db.query(User).filter(User.id == user_id).first()
+    if user:
+        return user
+    else:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"user with id {user_id} does not exist.")
 
 
 def delete_user(db: Session, user_id: int):
+    get_user(db=db, user_id=user_id)
     db.query(User).filter(User.id == user_id).delete()
     db.commit()
     return
@@ -29,16 +37,36 @@ def delete_user(db: Session, user_id: int):
 
 def update_user(db: Session, user_id: int, user: UserRequest):
     new_user = get_user(db=db, user_id=user_id)
+
     new_user.name = user.name
-    new_user.email = user.email
-    new_user.phone = user.phone
     new_user.password = user.password
+    new_user.phone = user.phone
+    new_user.email = user.email
     new_user.blood_group = user.blood_group
+    new_user.location = user.location
+    new_user.is_donar = user.is_donar
+
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
     return new_user
 
 
+def get_active_users(db: Session):
+    return db.query(User).filter(User.is_active == True).all()
+
+
+def get_admin_users(db: Session):
+    return db.query(User).filter(User.is_admin == True).all()
+
+
+def get_donar_users(db: Session):
+    return db.query(User).filter(User.is_donar == True).all()
+
+
+def get_user_by_location(db: Session, user_location: str):
+    return db.query(User).filter(User.location == user_location).all()
+
+
 def get_user_by_blood_group(db: Session, user_blood_group: str):
-    return db.query(User).filter(User.blood_group == user_blood_group)
+    return db.query(User).filter(User.blood_group == user_blood_group).all()
