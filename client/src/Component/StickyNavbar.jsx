@@ -6,7 +6,7 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
-import logo from '../assets/img/logo.png'
+
 import { MdBloodtype } from 'react-icons/md'
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -85,13 +85,15 @@ export function StickyNavbar() {
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <Button
-            variant="gradient"
-            size="sm"
-            className="hidden lg:inline-block"
-          >
-            <span>LogIN Now</span>
-          </Button>
+          <Link to='/login'>
+            <Button
+              variant="gradient"
+              size="sm"
+              className="hidden lg:inline-block"
+            >
+              <span>LogIN Now</span>
+            </Button>
+          </Link>
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6  text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden text-white"
@@ -133,7 +135,7 @@ export function StickyNavbar() {
       </div>
       <MobileNav open={openNav}>
         {navList}
-        <Link to={'/login'}>
+        <Link to='/login'>
           <Button variant="gradient" size="sm" fullWidth className="mb-2">
             <span>Login Now</span>
           </Button>
