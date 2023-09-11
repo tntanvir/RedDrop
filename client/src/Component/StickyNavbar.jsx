@@ -8,8 +8,11 @@ import {
 } from "@material-tailwind/react";
 import logo from '../assets/img/logo.png'
 import { MdBloodtype } from 'react-icons/md'
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
+  const [nav, setNav] = React.useState(false);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -17,7 +20,12 @@ export function StickyNavbar() {
       () => window.innerWidth >= 960 && setOpenNav(false),
     );
   }, []);
-
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav')
+      window.scrollY > 0 ? setNav(true) : setNav(false)
+    })
+  })
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -26,9 +34,9 @@ export function StickyNavbar() {
         color="white"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to="/home" className="flex items-center">
           Home
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -36,9 +44,9 @@ export function StickyNavbar() {
         color="white"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to="/account" className="flex items-center">
           Account
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -46,9 +54,9 @@ export function StickyNavbar() {
         color="white"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to="/" className="flex items-center">
           Contect
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -56,20 +64,20 @@ export function StickyNavbar() {
         color="white"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to="/" className="flex items-center">
           Docs
-        </a>
+        </Link>
       </Typography>
     </ul>
   );
 
   return (
 
-    <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none py-1 px-4 lg:px-8 lg:py-1 bg-opacity-100 border-none  blur-none bg-[#002147] text-white">
+    <Navbar className={`sticky top-0 z-10 h-max max-w-full rounded-none py-1 px-4 lg:px-8 lg:py-1 bg-opacity-100 border-none  blur-none bg-yellow-700 text-white ${nav ? 'shadow-md' : 'shadow-none'}`}>
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
-          href="#"
+          href="/"
           className="mr-4 flex justify-center items-center cursor-pointer py-1.5 text-white font-light"
         >
           <MdBloodtype className="flex justify-center items-center"></MdBloodtype>Blood Drop
@@ -125,9 +133,11 @@ export function StickyNavbar() {
       </div>
       <MobileNav open={openNav}>
         {navList}
-        <Button variant="gradient" size="sm" fullWidth className="mb-2">
-          <span>LogIN Now</span>
-        </Button>
+        <Link to={'/login'}>
+          <Button variant="gradient" size="sm" fullWidth className="mb-2">
+            <span>Login Now</span>
+          </Button>
+        </Link>
       </MobileNav>
     </Navbar>
   );

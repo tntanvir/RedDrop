@@ -18,9 +18,9 @@ const LINKS = [
 
 const currentYear = new Date().getFullYear();
 
-export function Footer() {
+const Footers = () => {
     return (
-        <footer className="relative w-full text-white">
+        <footer className="relative w-full text-black bg-yellow-700 pt-4">
             <div className="mx-auto w-full max-w-7xl px-8">
                 <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
                     <Typography variant="h5" className="mb-6 flex  ">
@@ -31,7 +31,7 @@ export function Footer() {
                             <ul key={title}>
                                 <Typography
                                     variant="small"
-                                    color="white"
+                                    color="black"
                                     className="mb-3 font-medium opacity-40"
                                 >
                                     {title}
@@ -41,7 +41,7 @@ export function Footer() {
                                         <Typography
                                             as="a"
                                             href="/"
-                                            color="white"
+                                            color="black"
                                             className="py-1.5 font-normal transition-colors hover:text-blue-gray-500"
                                         >
                                             {link}
@@ -82,3 +82,4 @@ export function Footer() {
         </footer>
     );
 }
+export default Footers;

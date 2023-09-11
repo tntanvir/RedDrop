@@ -7,14 +7,14 @@ import "swiper/css/autoplay";
 import { Navigation, Pagination, Autoplay } from "swiper";
 const ClineReviwe = () => {
   return (
-    <section className="py-20 text-white ">
+    <section className="py-20 text-black ">
       <div className="text-center">
-        <h1 className="text-5xl">Reviews</h1>
+        <h1 className="text-3xl">Clients <span className="text-green-600">Feedback</span></h1>
       </div>
-      {/* <br /> */}
 
-      <div className="flex max-w-6xl px-5 mx-auto items-center relative justify-center">
-        <div className="lg:w-2/3 w-full ">
+
+      <div className="flex max-w-6xl px-5 mx-auto items-center relative justify-center mt-9">
+        <div className="lg:w-2/3 w-full">
           <Swiper
             modules={[Pagination, Autoplay, Navigation]}
             slidesPerView={1}
@@ -25,7 +25,7 @@ const ClineReviwe = () => {
             pagination={{ clickable: true }}
           >
             <SwiperSlide>
-              <div className="h-fit w-full p-4 bg-slate-700 rounded-xl flex items-center justify-center flex-col border">
+              <div className="h-fit w-full p-4 bg-slate-700 rounded-xl flex items-center justify-center flex-col border-2 cursor-wait">
                 <img
                   src={
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8mEIWZjRFdiO4YIkq790lTaNzTtCH6DcwrQ&usqp=CAU"

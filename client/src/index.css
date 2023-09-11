@@ -10,12 +10,12 @@ html {
     @apply m-0 bg-white
 } */
 body {
-    @apply m-0 p-0 box-border bg-[#002147] text-gray-100;
+    @apply m-0 p-0 box-border bg-white text-black;
 }
 
 input,
 textarea {
-    @apply bg-[#f5f5f51c] outline-none rounded-lg p-3;
+    @apply bg-white text-black outline-none rounded-lg p-3;
 }
 
 ::placeholder {
