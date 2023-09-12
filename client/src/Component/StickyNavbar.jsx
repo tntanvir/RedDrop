@@ -33,6 +33,7 @@ export function StickyNavbar() {
         variant="small"
         color="white"
         className="p-1 font-normal"
+
       >
         <Link to="/home" className="flex items-center">
           Home
@@ -43,8 +44,9 @@ export function StickyNavbar() {
         variant="small"
         color="white"
         className="p-1 font-normal"
+
       >
-        <Link to="/account" className="flex items-center">
+        <Link to="/userDeshBord" className="flex items-center">
           Account
         </Link>
       </Typography>
@@ -53,8 +55,9 @@ export function StickyNavbar() {
         variant="small"
         color="white"
         className="p-1 font-normal"
+
       >
-        <Link to="/" className="flex items-center">
+        <Link to="/contect" className="flex items-center">
           Contect
         </Link>
       </Typography>
@@ -63,8 +66,9 @@ export function StickyNavbar() {
         variant="small"
         color="white"
         className="p-1 font-normal"
+
       >
-        <Link to="/" className="flex items-center">
+        <Link to="/docs" className="flex items-center">
           Docs
         </Link>
       </Typography>
@@ -85,7 +89,7 @@ export function StickyNavbar() {
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <Link to='/login'>
+          <Link to='/userDeshBord'>
             <Button
               variant="gradient"
               size="sm"
@@ -135,8 +139,8 @@ export function StickyNavbar() {
       </div>
       <MobileNav open={openNav}>
         {navList}
-        <Link to='/login'>
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
+        <Link to='/userDeshBord'>
+          <Button onClick={() => setOpenNav(!openNav)} variant="gradient" size="sm" fullWidth className="mb-2">
             <span>Login Now</span>
           </Button>
         </Link>

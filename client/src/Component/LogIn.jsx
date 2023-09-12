@@ -9,13 +9,13 @@ import { useContext } from "react";
 
 import { FcGoogle } from 'react-icons/fc'
 import { MdBloodtype } from "react-icons/md";
-import { contextApi } from "../App";
+import { ContextApi } from "../App";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 
 
-//import auth
+// import auth
 import auth from "../firebase.config";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 //
@@ -24,7 +24,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
 const LogIn = () => {
-    const [userLogin, setUserLogin] = useContext(contextApi);
+    const [userLogin, setUserLogin] = useContext(ContextApi);
     const navigate = useNavigate();
     const location = useLocation();
     const { from } = location.state;
@@ -39,11 +39,7 @@ const LogIn = () => {
             }
 
         })
-        // 
-        // console.log('hello')
-        // if (from) {
-        //     navigate(from.pathname)
-        // }
+
     }
 
     return (
@@ -69,6 +65,7 @@ const LogIn = () => {
 
             </Card>
         </div>
+
     );
 };
 

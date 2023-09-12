@@ -9,18 +9,23 @@ import UserDeshBord from "./Component/UserDeshBord";
 import PrivetRoute from "./Component/PrivetRoute";
 import { useState } from "react";
 import { createContext } from "react";
+import ResivedFrom from "./Component/ResivedFrom";
+import Contect from "./Component/Contect";
+import Docs from "./Component/Docs";
 
-export const contextApi = createContext()
+export const ContextApi = createContext()
 const App = () => {
   const [userLogin, setUserLogin] = useState(false)
   return (
-    <contextApi.Provider value={[userLogin, setUserLogin]}>
+    <ContextApi.Provider value={[userLogin, setUserLogin]}>
       <Router>
         <StickyNavbar></StickyNavbar>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn />} />
+          <Route path="/contect" element={<Contect />} />
+          <Route path="/docs" element={<Docs />} />
           <Route
             path="/userDeshBord"
             element={
@@ -33,12 +38,18 @@ const App = () => {
               <PrivetRoute childern={<DonerFrom />} />
             }
           />
-          <Route path="/login" element={<LogIn />} />
+          <Route
+            path="/resivedfrom"
+            element={
+              <PrivetRoute childern={<ResivedFrom />} />
+            }
+          />
+          {/* <Route path="/login" element={<LogIn />} /> */}
 
         </Routes>
         <Footers></Footers>
       </Router>
-    </contextApi.Provider>
+    </ContextApi.Provider>
   )
 }
 

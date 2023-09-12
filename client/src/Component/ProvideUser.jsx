@@ -15,7 +15,7 @@ const ProvideUser = () => {
 
                 </div>
             </Link>
-            <Link to={'/login'}>
+            <Link to={'/resivedfrom'}>
                 <div className="md:w-96 py-4 px-3 rounded-lg border shadow-md flex items-center flex-col justify-center cursor-pointer w-fit">
                     <div className='bg-gray-900 p-4 text-white font-semibold rounded-full w-fit animate-bounce'> <BiSearch /> </div>
                     <h1 className='text-2xl font-semibold'>Search Blood</h1>
