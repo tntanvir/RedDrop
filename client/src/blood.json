@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "bdGroup": "A+"
+    },
+    {
+        "id": 2,
+        "bdGroup": "A-"
+    },
+    {
+        "id": 3,
+        "bdGroup": "B+"
+    },
+    {
+        "id": 4,
+        "bdGroup": "B-"
+    },
+    {
+        "id": 5,
+        "bdGroup": "O+"
+    },
+    {
+        "id": 6,
+        "bdGroup": "O-"
+    },
+    {
+        "id": 7,
+        "bdGroup": "AB+"
+    },
+    {
+        "id": 8,
+        "bdGroup": "AB-"
+    }
+]

@@ -1,12 +1,21 @@
 import React from 'react';
-import { Typography } from '@material-tailwind/react';
+import { Option, Typography } from '@material-tailwind/react';
 import { Checkbox } from '@material-tailwind/react';
 import { Card } from '@material-tailwind/react';
 import { Button } from '@material-tailwind/react';
 import { Input } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
-
+import { Select } from '@material-tailwind/react';
+import fack from '../fack.json'
+import blood from '../blood.json'
+import { useState } from 'react';
 const ResivedFrom = () => {
+    const [bdGroup, setBdGroup] = useState('')
+    const [location, setLocation] = useState('')
+
+    const selectvlue = (e) => {
+        setLocation(e)
+    }
     return (
         <div className="h-screen flex items-center justify-center">
             <Card color="transparent" shadow={false}>
@@ -18,9 +27,16 @@ const ResivedFrom = () => {
                 </Typography>
                 <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                     <div className="mb-4 flex flex-col gap-6">
-                        <Input size="lg" label="Blood Group" />
-                        {/* <Input size="lg" label="Phone" /> */}
-                        <Input size="lg" label="Location" />
+                        <Select label="Select Blood Group" onChange={(e) => setBdGroup(e)} required>
+                            {
+                                blood.map((e) => <Option value={e.bdGroup}>{e.bdGroup}</Option>)
+                            }
+                        </Select>
+                        <Select label="Select Location" onChange={selectvlue} required>
+                            {
+                                fack.map((e) => <Option value={e.name}>{e.name}</Option>)
+                            }
+                        </Select>
 
                     </div>
                     <Checkbox
@@ -42,7 +58,7 @@ const ResivedFrom = () => {
                         containerProps={{ className: "-ml-2.5" }}
                     />
                     <Link to={'/userDeshBord'}>
-                        <Button className="mt-6" fullWidth>
+                        <Button onClick={() => console.log(location, bdGroup)} className="mt-6" fullWidth>
                             Search
                         </Button>
                     </Link>
