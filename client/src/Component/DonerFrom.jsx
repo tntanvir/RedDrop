@@ -29,27 +29,46 @@ const DonerFrom = () => {
     useEffect(() => {
         setEmail(userLogin.email)
         setName(userLogin.displayName)
-        console.log(fack)
     }, [])
 
     const selectvlue = (e) => {
         setLocation(e)
     }
 
-    const hendleSubmit = () => {
-        console.log(name, email, phone, bdGroup, location);
-        navigate('/userDeshBord')
+    const hendleSubmit = (e) => {
+        e.preventDefault()
+        // console.log(name, email, phone, bdGroup, location);
+        fetch('http://127.0.0.1:8000/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                "name": name,
+                "email": email,
+                "phone": phone,
+                "blood_group": bdGroup,
+                "location": location,
+                "location_bn": location,
+                "lat": 0,
+                "lon": 0,
+                "is_donar": false,
+
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(res => {
+                if (res.status === 201) {
+                    navigate('/userDeshBord')
+                } else {
+                    navigate('/')
+                }
+
+            })
+            .catch(e => console.log(e))
+
     }
 
-    // const phonNum = () => {
-    //     const mobileNumber = "+8801000000000";
-    //     if (new Regex("^([01]|\+88)?\d{11}").IsMatch(mobileNumber)) {
-    //         console.log('il');
-    //     }
-    //     else {
-    //         console.log('jh');
-    //     }
-    // }
+
 
 
 
