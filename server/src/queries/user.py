@@ -26,7 +26,16 @@ def get_user(db: Session, user_id: int):
         return user
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail=f"user with id {user_id} does not exist.")
+                            detail=f"user with id `{user_id}` does not exist.")
+
+
+def get_users_by_email(db: Session, user_email: str):
+    users = db.query(User).filter(User.email == user_email).all()
+    if users:
+        return users
+    else:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"user with email `{user_email}` does not exist.")
 
 
 def delete_user(db: Session, user_id: int):
@@ -69,3 +78,7 @@ def get_user_by_location(db: Session, user_location: str):
 
 def get_user_by_blood_group(db: Session, user_blood_group: str):
     return db.query(User).filter(User.blood_group == user_blood_group).all()
+
+
+def get_user_by_location_and_blood_group(db: Session, user_location: str, user_blood_group: str):
+    return db.query(User).filter(User.location == user_location).filter(User.blood_group == user_blood_group).all()
