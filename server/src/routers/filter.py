@@ -26,3 +26,8 @@ def get_users_by_blood_group(blood_group: str, db: Session = Depends(get_db)):
 @router.get("/location/{location}", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
 def get_users_by_blood_group(location: str, db: Session = Depends(get_db)):
     return user.get_user_by_location(db=db, user_location=location)
+
+
+@router.get("/{location}/{blood_group}", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
+def get_users_by_location_and_blood_group(location: str, blood_group: str, db: Session = Depends(get_db)):
+    return user.get_user_by_location_and_blood_group(db=db, user_location=location, user_blood_group=blood_group)

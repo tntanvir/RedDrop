@@ -18,9 +18,14 @@ def create_a_user(user_req: UserRequest, db: Session = Depends(get_db)):
     return user.create_user(db=db, user=user_req)
 
 
-@router.get("/{id}", response_model=UserResponse, status_code=status.HTTP_200_OK)
+@router.get("/id/{id}", response_model=UserResponse, status_code=status.HTTP_200_OK)
 def get_a_user_by_id(id: int, db: Session = Depends(get_db)):
     return user.get_user(db=db, user_id=id)
+
+
+@router.get("/email/{email}", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
+def get_users_by_email(email: str, db: Session = Depends(get_db)):
+    return user.get_users_by_email(db=db, user_email=email)
 
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
