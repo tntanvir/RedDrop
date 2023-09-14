@@ -5,22 +5,17 @@ from ..dependencies import get_db
 from ..queries import user
 from ..schemas.user import UserResponse
 
-router = APIRouter(prefix="/filters", tags=["Filters"])
-
-
-@router.get("/active", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
-def get_active_users(db: Session = Depends(get_db)):
-    return user.get_active_users(db=db)
-
-
-@router.get("/admin", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
-def get_admin_users(db: Session = Depends(get_db)):
-    return user.get_admin_users(db=db)
+router = APIRouter(prefix="/filter_by", tags=["Filters"])
 
 
 @router.get("/donar", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
 def get_donar_users(db: Session = Depends(get_db)):
     return user.get_donar_users(db=db)
+
+
+@router.get("/receiver", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
+def get_receiver_users(db: Session = Depends(get_db)):
+    return user.get_receiver_users(db=db)
 
 
 @router.get("/blood_group/{blood_group}", response_model=list[UserResponse], status_code=status.HTTP_200_OK)
