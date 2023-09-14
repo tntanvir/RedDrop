@@ -6,8 +6,9 @@ from ..schemas.user import UserRequest
 
 
 def create_user(db: Session, user: UserRequest):
-    new_user = User(name=user.name, password=user.password, phone=user.phone, email=user.email,
-                    blood_group=user.blood_group, location=user.location,
+    new_user = User(name=user.name, phone=user.phone, email=user.email,
+                    blood_group=user.blood_group,
+                    location=user.location, location_bn=user.location_bn, lat=user.lat, lon=user.lon,
                     is_donar=user.is_donar)
     db.add(new_user)
     db.commit()
@@ -39,11 +40,13 @@ def update_user(db: Session, user_id: int, user: UserRequest):
     new_user = get_user(db=db, user_id=user_id)
 
     new_user.name = user.name
-    new_user.password = user.password
     new_user.phone = user.phone
     new_user.email = user.email
     new_user.blood_group = user.blood_group
     new_user.location = user.location
+    new_user.location_bn = user.location_bn
+    new_user.lat = user.lat
+    new_user.lon = user.lon
     new_user.is_donar = user.is_donar
 
     db.add(new_user)
@@ -52,12 +55,8 @@ def update_user(db: Session, user_id: int, user: UserRequest):
     return new_user
 
 
-def get_active_users(db: Session):
-    return db.query(User).filter(User.is_active == True).all()
-
-
-def get_admin_users(db: Session):
-    return db.query(User).filter(User.is_admin == True).all()
+def get_receiver_users(db: Session):
+    return db.query(User).filter(User.is_donar == False).all()
 
 
 def get_donar_users(db: Session):

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Boolean, Integer, String
+from sqlalchemy import Column, Boolean, Integer, String, Float
 
 from ..database import Base
 
@@ -11,11 +11,12 @@ class User(Base):
     name = Column(String)
     phone = Column(String)
     email = Column(String)
-    password = Column(String)
 
     blood_group = Column(String)
-    location = Column(String)
-    is_donar = Column(Boolean)
 
-    is_active = Column(Boolean, default=True)
-    is_admin = Column(Boolean, default=False)
+    location = Column(String)
+    location_bn = Column(String)
+    lat = Column(Float)
+    lon = Column(Float)
+
+    is_donar = Column(Boolean)

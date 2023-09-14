@@ -5,19 +5,19 @@ class UserRequest(BaseModel):
     name: str
     email: str
     phone: str
-    password: str
 
     blood_group: str
+
     location: str
+    location_bn: str
+    lat: float
+    lon: float
 
     is_donar: bool = False
 
 
 class UserResponse(UserRequest):
     id: int
-
-    is_active: bool
-    is_admin: bool
 
     class Config:
         orm_mode = True
