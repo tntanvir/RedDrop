@@ -137,7 +137,7 @@ export function StickyNavbar() {
           </IconButton>
         </div>
       </div>
-      <MobileNav open={openNav}>
+      <MobileNav open={openNav} onClick={() => setOpenNav(!openNav)}>
         {navList}
         <Link to='/userDeshBord'>
           <Button onClick={() => setOpenNav(!openNav)} variant="gradient" size="sm" fullWidth className="mb-2">
