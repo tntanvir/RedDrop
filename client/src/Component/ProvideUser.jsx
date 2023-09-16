@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProvideUser = () => {
     return (
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 p-5">
+        <div id='provide' className="flex flex-col md:flex-row items-center justify-center gap-4 p-5">
             <Link to={'/donerfrom'}>
                 <div className="md:w-96 py-4 px-3 rounded-lg border shadow-md flex items-center flex-col justify-center cursor-pointer w-fit">
 
