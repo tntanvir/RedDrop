@@ -13,9 +13,11 @@ const Hero = () => {
   const notify = () => {
     if (userLogin.email) {
 
-      navigate('/donerfrom')
+      navigate('/provideUser')
     } else {
-      toast.error("Login Fast!")
+      toast.error("Login Fast!", {
+        theme: "colored"
+      })
 
     }
 

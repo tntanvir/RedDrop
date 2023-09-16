@@ -12,6 +12,8 @@ import { createContext } from "react";
 import ResivedFrom from "./Component/ResivedFrom";
 import Contect from "./Component/Contect";
 import Docs from "./Component/Docs";
+import Getstart from "./Component/Getstart";
+
 
 export const ContextApi = createContext()
 const App = () => {
@@ -26,6 +28,7 @@ const App = () => {
           <Route path="/login" element={<LogIn />} />
           <Route path="/contect" element={<Contect />} />
           <Route path="/docs" element={<Docs />} />
+          <Route path="/provideUser" element={<Getstart />} />
           <Route
             path="/userDeshBord"
             element={
