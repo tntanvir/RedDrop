@@ -12,8 +12,48 @@ import {
 import { Textarea } from '@material-tailwind/react';
 import { Rating } from '@material-tailwind/react';
 import { useState } from 'react';
-const UserReviewFrom = () => {
+const UserReviewFrom = ({ name, email, photo_url }) => {
+    // console.log(name, email, photo_url);
     const [rated, setRated] = useState(5);
+    const [text, setText] = useState('');
+
+
+    const sendFeedBack = () => {
+        if (text.length > 10) {
+            fetch('http://127.0.0.1:8000/feedbacks', {
+                method: 'POST',
+                body: JSON.stringify({
+                    "name": name,
+                    "email": email,
+                    "photo_url": photo_url,
+                    "message": text,
+                    "rated": rated.toString(),
+                    "rated_value": rated
+
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(res => console.log(res.json()))
+                .catch(e => console.log(e))
+            console.log(text, rated);
+
+        } else {
+            console.log("add text");
+        }
+        setText('')
+    }
+
+
+
+
+
+
+
+
+
+
+
     return (
         <Card className="w-96 md:w-1/2 mt-40">
             <CardHeader
@@ -25,25 +65,27 @@ const UserReviewFrom = () => {
                     Share Your Feedback
                 </Typography>
             </CardHeader>
-            <CardBody className="flex flex-col gap-4">
-                <Textarea label="Message" />
-                <div className="flex items-center gap-2">
-                    <Rating value={5} onChange={(value) => setRated(value)} />
-                    <Typography color="blue-gray" className="font-medium">
-                        {rated}.0 Rated
-                    </Typography>
-                </div>
-                <div className="-ml-2.5">
-                    <Checkbox label="Remember Me" />
-                </div>
-            </CardBody>
-            <CardFooter className="pt-0">
-                <Button variant="gradient" fullWidth>
-                    Share Now
-                </Button>
+            <form action="">
+                <CardBody className="flex flex-col gap-4">
 
+                    <Textarea label="Message" value={text} onChange={(e) => setText(e.target.value)} required />
+                    <div className="flex items-center gap-2">
+                        <Rating value={rated} onChange={(value) => setRated(value)} />
+                        <Typography color="blue-gray" className="font-medium">
+                            {rated}.0 Rated
+                        </Typography>
+                    </div>
+                    <div className="-ml-2.5">
+                        <Checkbox label="Remember Me" />
+                    </div>
+                </CardBody>
+                <CardFooter className="pt-0">
+                    <Button onClick={sendFeedBack} variant="gradient" fullWidth>
+                        Share Now
+                    </Button>
+                </CardFooter>
+            </form>
 
-            </CardFooter>
         </Card>
     );
 };

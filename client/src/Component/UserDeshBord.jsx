@@ -72,7 +72,15 @@ const UserDeshBord = () => {
     const DeletItem = (id) => {
         fetch(`http://127.0.0.1:8000/users/${id}`, {
             method: "DELETE"
-        })
+        }).then(data => {
+
+            fetch(`http://127.0.0.1:8000/users/email/${userLogin.email}`)
+                .then(res => res.json())
+                .then(data => setDoner(data))
+                .catch(e => console.log(e))
+            setProfile([])
+        }
+        )
 
     }
 
@@ -114,7 +122,15 @@ const UserDeshBord = () => {
                 'Content-type': "application/json; charset=UTF-8"
             },
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+
+                fetch(`http://127.0.0.1:8000/users/email/${userLogin.email}`)
+                    .then(res => res.json())
+                    .then(data => setDoner(data))
+                    .catch(e => console.log(e))
+                setProfile([])
+            }
+            )
         console.log(id)
     }
 
@@ -137,9 +153,12 @@ const UserDeshBord = () => {
                                 <img className="rounded-full" src={profile.photoURL} alt="" />
                                 <h1>{profile.displayName}</h1>
                                 <p>{profile.email}</p>
-                                <UserReviewFrom></UserReviewFrom>
+                                <UserReviewFrom name={userLogin.displayName} email={userLogin.email} photo_url={userLogin.photoURL}></UserReviewFrom>
                             </div>
                         )
+                    }
+                    {
+                        console.log(typeof doner)
                     }
                     {
                         doner.length > 0 && (
@@ -166,8 +185,8 @@ const UserDeshBord = () => {
                                         <tbody>
                                             {
 
-                                                doner.map((info, i) => (
 
+                                                doner.map((info, i) => (
 
 
                                                     <tr key={i} className="even:bg-blue-gray-50/50">

@@ -1,6 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { MdBloodtype } from "react-icons/md";
-
+import { AiFillGithub } from "react-icons/ai"
+import { Link } from "react-router-dom";
 const LINKS = [
     {
         title: "Product",
@@ -38,14 +39,14 @@ const Footers = () => {
                                 </Typography>
                                 {items.map((link) => (
                                     <li key={link}>
-                                        <Typography
-                                            as="a"
-                                            href="/"
-                                            color="black"
-                                            className="py-1.5 font-normal transition-colors hover:text-blue-gray-500"
+                                        <Link
+
+                                            to="/"
+
+                                            className="py-1.5 font-normal text-gray-800 transition-colors hover:text-blue-gray-500"
                                         >
                                             {link}
-                                        </Typography>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -60,10 +61,11 @@ const Footers = () => {
                         &copy; {currentYear} <a href="/" className="flex items-center">  <MdBloodtype className="flex" /> Blood-Drop</a>. All
                         Rights Reserved.
                     </Typography>
-                    <div className="flex gap-4 text-blue-gray-500 sm:justify-center">
-                        <Typography as="a" href="/" className="opacity-80 transition-opacity hover:opacity-100">
-
-                        </Typography>
+                    <div className="flex gap-4 text-blue-gray-500 text-2xl sm:justify-center">
+                        <a href="https://github.com/tntanvir/RedDrop"
+                            className="opacity-80 transition-opacity hover:opacity-100" target="_blank" rel="noreferrer" >
+                            <AiFillGithub />
+                        </a>
                         <Typography as="a" href="/" className="opacity-80 transition-opacity hover:opacity-100">
 
                         </Typography>
