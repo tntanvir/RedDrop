@@ -13,6 +13,7 @@ import ResivedFrom from "./Component/ResivedFrom";
 import Contect from "./Component/Contect";
 import Docs from "./Component/Docs";
 import Getstart from "./Component/Getstart";
+import NotFound from "./Component/NotFound";
 
 
 export const ContextApi = createContext()
@@ -47,7 +48,7 @@ const App = () => {
               <PrivetRoute childern={<ResivedFrom />} />
             }
           />
-          {/* <Route path="/login" element={<LogIn />} /> */}
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
         <Footers></Footers>

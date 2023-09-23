@@ -8,6 +8,10 @@ This part of the project uses Python, install it if don't already have it. We re
 
 **Note:** You can use any identifier as environment name instead of env or avoid the whole process although it's not recommended.
 
+
+## run
+uvicorn src.main:app
 ## Docs
+
 
 Science this service is built with FastAPI, it contains docs which you can access from `SERVER_BASE_URL/docs` and `SERVER_BASE_URL/redoc` (default is: `http://localhost:8000/docs` or `http://localhost:800/redoc`)

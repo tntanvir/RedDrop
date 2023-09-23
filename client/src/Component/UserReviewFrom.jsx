@@ -43,17 +43,6 @@ const UserReviewFrom = ({ name, email, photo_url }) => {
         }
         setText('')
     }
-
-
-
-
-
-
-
-
-
-
-
     return (
         <Card className="w-96 md:w-1/2 mt-40">
             <CardHeader
@@ -75,9 +64,7 @@ const UserReviewFrom = ({ name, email, photo_url }) => {
                             {rated}.0 Rated
                         </Typography>
                     </div>
-                    <div className="-ml-2.5">
-                        <Checkbox label="Remember Me" />
-                    </div>
+
                 </CardBody>
                 <CardFooter className="pt-0">
                     <Button onClick={sendFeedBack} variant="gradient" fullWidth>

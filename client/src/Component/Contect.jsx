@@ -1,5 +1,5 @@
+
 import { Button } from '@material-tailwind/react';
-import React from 'react';
 import { MdMarkEmailRead, MdLocalPhone, MdHome } from 'react-icons/md'
 const Contect = () => {
     return (
@@ -11,7 +11,7 @@ const Contect = () => {
                     <form className=' flex flex-col flex-1 gap-5'>
                         <input className='border bg-blue-gray-100/10' type="text" placeholder='Your Name' />
                         <input className='border bg-blue-gray-100/10' type="text" placeholder='Your Email Address' />
-                        <textarea className='border bg-blue-gray-100/10' placeholder='Your Message' rows={5}></textarea>
+                        <textarea className='border bg-blue-gray-100/10' placeholder='Your Message' rows={5} ></textarea>
                         <Button variant="gradient" size="sm" className="mb-2 ">
                             <span>Send Message</span>
                         </Button>

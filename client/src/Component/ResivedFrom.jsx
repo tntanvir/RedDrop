@@ -148,7 +148,7 @@ const ResivedFrom = () => {
                                                     </td>
                                                     <td className="flex gap-2 justify-center items-center">
 
-                                                        <Button className="rounded-full bg-yellow-700 py-2 px-3">Add</Button>
+                                                        <a className="rounded-full bg-yellow-700 py-2 px-3 text-white" href={`tel:${info.phone}`}>Call</a>
                                                     </td>
                                                 </tr>
                                             ))

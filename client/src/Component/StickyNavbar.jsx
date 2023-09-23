@@ -236,11 +236,26 @@ export function StickyNavbar() {
         </div>
         <MobileNav open={openNav} onClick={() => setOpenNav(!openNav)}>
           {navList}
-          <Link to='/userDeshBord'>
+          {/* <Link to='/userDeshBord'>
             <Button onClick={() => setOpenNav(!openNav)} variant="gradient" size="sm" fullWidth className="mb-2">
               <span>Login Now</span>
             </Button>
-          </Link>
+          </Link> */}
+          {userLogin.email ?
+            <Button
+              variant="gradient" size="sm" fullWidth className="mb-2"
+              onClick={singOut}
+            >
+              <span>SingOut</span>
+            </Button> :
+            <Button
+              variant="gradient" size="sm" fullWidth className="mb-2"
+              onClick={handleOpen}
+            >
+              <span>LogIN Now</span>
+            </Button>
+          }
+
         </MobileNav>
       </Navbar>
 
